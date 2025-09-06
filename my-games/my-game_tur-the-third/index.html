@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --baseColor: url("https: //klike.net/uploads/posts/2020-09/1601452733_6.jpg");
+            --blockColor: rgba(245, 240, 231, 1);
+            --textColor: rgba(41, 41, 41, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: var(--baseColor);
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .start,
+        .game {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+        }
+
+        .start {
+            top: -100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            color: var(--textColor);
+            transform: rotate(20deg);
+            transition: all 1s;
+        }
+
+        .start_discription {
+            padding: 10px;
+            border-radius: 20px;
+            background-color: var(--blockColor);
+            text-wrap: nowrap;
+            margin-left: 130%;
+            font-size: 60px;
+            transition: all 1s;
+        }
+
+
+        .start_create-by {
+            background-color: var(--blockColor);
+            padding: 5px;
+            border-radius: 10px;
+            text-wrap: nowrap;
+            margin-right: 130%;
+        }
+
+        .game {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            top: 100%;
+            transition: all 1s;
+            padding: 40px;
+        }
+
+        .game_score {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            height: 10%;
+            margin-bottom: 5px;
+        }
+
+        .game_team {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            font-size: 40px;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .main_matrix {
+            color: var(--textColor);
+            width: 1088px;
+            height: 626px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        .matrix_floor {
+
+            width: 100%;
+            height: 19%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .start_create-by {
+            opacity: 1;
+            transition: all 1s;
+        }
+
+        .matrix_item {
+            background-color: var(--blockColor);
+            width: 16%;
+            height: 100%;
+            border-radius: 10px;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main_start start">
+            <h1 class="start_discription">СВОЯ ИГРА ТУР 3</h1>
+            <span class="start_create-by">сделано: 911-duck(<a style="color: rgb(103, 103, 103);"
+                    href="https://github.com/911-duck">https://github.com/911-duck</a>)</span>
+        </div>
+        <div class="main_game game">
+            <div class="game_score">
+                <div class="game_team red">0</div>
+                <div class="game_team blue">0</div>
+            </div>
+
+            <div class="main_matrix matrix">
+                <div class="matrix_floor">
+                    <div class="matrix_item">биология</div>
+                    <div class="matrix_item">1</div>
+                    <div class="matrix_item">2</div>
+                    <div class="matrix_item">3</div>
+                    <div class="matrix_item">4</div>
+                    <div class="matrix_item">5</div>
+                </div>
+                <div class="matrix_floor">
+                    <div class="matrix_item">химия</div>
+                    <div class="matrix_item">1</div>
+                    <div class="matrix_item">2</div>
+                    <div class="matrix_item">3</div>
+                    <div class="matrix_item">4</div>
+                    <div class="matrix_item">5</div>
+                </div>
+                <div class="matrix_floor">
+                    <div class="matrix_item">физика</div>
+                    <div class="matrix_item">1</div>
+                    <div class="matrix_item">2</div>
+                    <div class="matrix_item">3</div>
+                    <div class="matrix_item">4</div>
+                    <div class="matrix_item">5</div>
+                </div>
+                <div class="matrix_floor">
+                    <div class="matrix_item">география</div>
+                    <div class="matrix_item">1</div>
+                    <div class="matrix_item">2</div>
+                    <div class="matrix_item">3</div>
+                    <div class="matrix_item">4</div>
+                    <div class="matrix_item">5</div>
+                </div>
+                <div class="matrix_floor">
+                    <div class="matrix_item">история</div>
+                    <div class="matrix_item">1</div>
+                    <div class="matrix_item">2</div>
+                    <div class="matrix_item">3</div>
+                    <div class="matrix_item">4</div>
+                    <div class="matrix_item">5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //game
+
+        const item = document.querySelectorAll(".matrix_item")
+
+        const red = document.querySelector(".red")
+        const blue = document.querySelector(".blue")
+
+        let questions = [
+            [
+                "Вопрос биология: Какие органоиды клетки отвечают за синтез белка?",
+                " Вопрос биология: Что такое фотосинтез и каково его уравнение?",
+                " Вопрос биология: Какой процесс обеспечивает клетку энергией в виде АТФ?",
+                " Вопрос биология: Как называются внеядерные носители наследственной информации в клетке?",
+                " Вопрос биология: Что такое митоз и каково его биологическое значение?"
+            ],
+            [
+                " Вопрос химия: Как изменяются металлические свойства элементов в периоде с увеличением заряда ядра?",
+                " Вопрос химия: Какой тип химической связи возникает между атомами с большой разностью электроотрицательностей?",
+                " Вопрос химия: Как называется число, показывающее количество молекул или атомов в порции вещества?",
+                " Вопрос химия: К какому классу неорганических соединений относятся вещества, образованные катионом металла и гидроксид-анионом?",
+                " Вопрос химия: Как называется реакция обмена между кислотой и основанием, приводящая к образованию соли и воды?"
+            ],
+            [
+                " Вопрос физика: Что называют силой, возникающей при деформации тела и направленной против перемещения частиц?",
+                " Вопрос физика: Как называется работа, совершаемая силой в 1 Н на пути в 1 м?",
+                " Вопрос физика: Как называется физическая величина, равная отношению работы ко времени, за которое она совершена?",
+                " Вопрос физика: Как называется явление сохранения скорости тела при отсутствии действия других тел?",
+                " Вопрос физика: Каким прибором измеряют атмосферное давление?"
+            ],
+            [
+                " Вопрос география: Какие факторы влияют на распределение солнечного света и тепла по поверхности Земли?",
+                " Вопрос география: Как называется процесс выветривания, ведущий к разрыхлению и разрушению горных пород?",
+                " Вопрос география: Как называется совокупность неровностей земной поверхности, различающихся по размерам и происхождению?",
+                " Вопрос география: Какие основные виды воздушных масс формируются над территорией России?",
+                " Вопрос география: Что такое географическая оболочка и каковы её главные компоненты?"
+            ],
+            [
+                " Вопрос история: Какое прозвище получил царь Иван IV за жестокость своего правления?",
+                " Вопрос история: Как назывался высший сословно-представительный орган власти в России в XVI-XVII веках?",
+                " Вопрос история: Какой век в русской истории называют «бунташным» и почему?",
+                " Вопрос история: Кто был первым правителем России, принявшим титул «царь»?",
+                " Вопрос история: Как называется экономическая политика протекционизма, проводимая Петром I?"
+            ]
+        ];
+
+        let answers = [
+            [
+                "ответ биология: Рибосомы;",
+                " ответ биология: Процесс образования органических веществ из неорганических на свету. 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂;",
+                " ответ биология: Клеточное дыхание;",
+                " ответ биология: Плазмиды;",
+                " ответ биология: Это непрямое деление клетки, лежащее в основе роста и бесполого размножения организмов;"
+            ],
+            [
+                " ответ химия: Ослабевают;",
+                " ответ химия: Ионная связь;",
+                " ответ химия: Количество вещества (моль);",
+                " ответ химия: Основания;",
+                " ответ химия: Реакция нейтрализации;"
+            ],
+            [
+                " ответ физика: Сила упругости;",
+                " ответ физика: Джоуль (Дж);",
+                " ответ физика: Мощность;",
+                " ответ физика: Инерция;",
+                " ответ физика: Барометр;"
+            ],
+            [
+                " ответ география: Широта места, угол падения солнечных лучей, вращение Земли вокруг своей оси и вокруг Солнца;",
+                " ответ география: Физическое (механическое) выветривание;",
+                " ответ география: Рельеф;",
+                " ответ география: Арктические, умеренные (полярные и тропические – реже);",
+                " ответ география: Оболочка Земли, в которой соприкасаются и взаимодействуют литосфера, гидросфера, атмосфера и биосфера;"
+            ],
+            [
+                " ответ история: Грозный;",
+                " ответ история: Земский собор;",
+                " ответ история: XVII век, из-за большого количества народных восстаний и бунтов;",
+                " ответ история: Иван IV Грозный;",
+                " ответ история: Меркантилизм;"
+            ]
+        ];
+
+        //start game
+
+        let state = 1
+
+        function chooseTeam() {
+            if (state == 1) {
+                document.querySelector(".red").style.boxShadow = "0 0 10px 2px rgb(255, 132, 132)"
+                document.querySelector(".blue").style.boxShadow = "none"
+                document.querySelector(".red").style.transform = "scale(1.1)"
+                document.querySelector(".blue").style.transform = "scale(1)"
+            } else {
+                document.querySelector(".blue").style.boxShadow = "0 0 10px 2px rgba(132, 171, 255, 1)"
+                document.querySelector(".red").style.boxShadow = "none"
+                document.querySelector(".blue").style.transform = "scale(1.1)"
+                document.querySelector(".red").style.transform = "scale(1)"
+            }
+        }
+
+        let weight = 0;
+
+        startAnimation()
+        chooseTeam()
+
+        function startAnimation() {
+            setTimeout(() => {
+                document.querySelector(".start").style.top = "0%"
+                document.querySelector(".start_discription").style.marginLeft = "0%"
+                document.querySelector(".start_create-by").style.marginRight = "0%"
+                setTimeout(() => {
+                    document.querySelector(".start").style.transform = "rotate(0deg)"
+                    // document.querySelector(".start").style.top = "-100%"
+                }, 2000);
+                setTimeout(() => {
+                    // document.querySelector(".start").style.transform = "rotate(0deg)"
+                    document.querySelector(".start").style.top = "-100%"
+                    document.querySelector(".game").style.top = "0%"
+                    document.querySelector(".start_create-by").style.opacity = "0"
+
+                }, 6000);
+            }, 2000);
+        }
+
+        function continueGame(e) {
+            state = !state
+            chooseTeam()
+            document.querySelector("body").removeEventListener("click", continueGame)
+            document.querySelector(".start_create-by").style.opacity = "0"
+            document.querySelector(".start").style.top = "-100%"
+            document.querySelector(".game").style.top = "0%"
+        }
+
+        function getAnswer(e) {
+            document.querySelector(".start_create-by").style.opacity = "1"
+            document.querySelector("body").removeEventListener("click", getAnswer)
+            setTimeout(() => {
+                document.querySelector("body").addEventListener("click", continueGame)
+            }, 1000);
+        }
+
+        function getQuethions(e) {
+            e.target.removeEventListener('click', getQuethions)
+            e.target.style.background = "rgba(123, 123, 123, 1)"
+            weight = Number(e.target.innerText)
+
+            for (let i = 0; i < item.length; i++) {
+                const element = item[i];
+                if (element == e.target) {
+                    document.querySelector(".start_discription").innerText = questions[Math.floor(i / 6)][i % 6 - 1]
+                    document.querySelector(".start_create-by").innerText = answers[Math.floor(i / 6)][i % 6 - 1]
+                    document.querySelector(".start_create-by").style.opacity = "0"
+                    document.querySelector(".start_discription").style.fontSize = "30px"
+                    document.querySelector(".start_create-by").style.fontSize = "20px"
+                    document.querySelector(".start").style.top = "0"
+                    document.querySelector(".game").style.top = "100%"
+                }
+            }
+            setTimeout(() => {
+                document.querySelector("body").addEventListener("click", getAnswer)
+            }, 1000);
+        }
+
+        for (let i = 0; i < item.length; i++) {
+            const element = item[i];
+            if (i % 6 != 0) element.addEventListener('click', getQuethions)
+        }
+
+        document.querySelector(".red").addEventListener('click', e => {
+            document.querySelector(".red").innerHTML = Number(document.querySelector(".red").innerHTML) + weight
+            weight = 0
+        })
+
+        document.querySelector(".blue").addEventListener('click', e => {
+            document.querySelector(".blue").innerHTML = Number(document.querySelector(".blue").innerHTML) + weight
+            weight = 0
+        })
+    </script>
+</body>
+
+</html>
